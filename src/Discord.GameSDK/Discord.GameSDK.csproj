@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ContentWithTargetPath Include="Libs\DiscordGameSDK.dll">
+    <ContentWithTargetPath Include="..\Libs\DiscordGameSDK.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <TargetPath>%(Filename)%(Extension)</TargetPath>
     </ContentWithTargetPath>
