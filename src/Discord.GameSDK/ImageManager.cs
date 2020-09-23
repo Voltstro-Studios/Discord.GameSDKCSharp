@@ -1,5 +1,7 @@
 using System;
 using System.Runtime.InteropServices;
+using Discord.GameSDK.Images;
+
 #if UNITY_EDITOR || UNITY_STANDALONE
 using UnityEngine;
 #endif
