@@ -8,6 +8,7 @@ using UnityEngine;
 
 namespace Discord
 {
+    /*
 	public partial struct ImageHandle
     {
         static public ImageHandle User(Int64 id)
@@ -25,6 +26,7 @@ namespace Discord
             };
         }
     }
+    */
 
     public partial class ImageManager
     {
