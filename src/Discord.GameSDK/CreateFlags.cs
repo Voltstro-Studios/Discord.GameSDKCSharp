@@ -3,7 +3,7 @@
 	/// <summary>
 	/// Flags to use while create the Discord client
 	/// </summary>
-	public enum CreateFlags
+	public enum CreateFlags : ulong
 	{
 		/// <summary>
 		/// Requires Discord to be running to play the game
