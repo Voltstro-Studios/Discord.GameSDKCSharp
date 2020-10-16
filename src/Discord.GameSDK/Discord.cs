@@ -6,7 +6,7 @@ namespace Discord.GameSDK
     /// <summary>
     /// An instance of Discord for the SDK.
     /// </summary>
-	public class Discord : IDisposable
+	public sealed class Discord : IDisposable
     {
         [StructLayout(LayoutKind.Sequential)]
         internal struct FFIEvents
@@ -68,31 +68,18 @@ namespace Discord.GameSDK
             internal DestroyHandler Destroy;
 
             internal RunCallbacksMethod RunCallbacks;
-
             internal SetLogHookMethod SetLogHook;
-
             internal GetApplicationManagerMethod GetApplicationManager;
-
             internal GetUserManagerMethod GetUserManager;
-
             internal GetImageManagerMethod GetImageManager;
-
             internal GetActivityManagerMethod GetActivityManager;
-
             internal GetRelationshipManagerMethod GetRelationshipManager;
-
             internal GetLobbyManagerMethod GetLobbyManager;
-
             internal GetNetworkManagerMethod GetNetworkManager;
-
             internal GetOverlayManagerMethod GetOverlayManager;
-
             internal GetStorageManagerMethod GetStorageManager;
-
             internal GetStoreManagerMethod GetStoreManager;
-
             internal GetVoiceManagerMethod GetVoiceManager;
-
             internal GetAchievementManagerMethod GetAchievementManager;
         }
 
@@ -100,59 +87,45 @@ namespace Discord.GameSDK
         internal struct FFICreateParams
         {
             internal long ClientId;
-
             internal ulong Flags;
 
             internal IntPtr Events;
-
             internal IntPtr EventData;
 
             internal IntPtr ApplicationEvents;
-
             internal uint ApplicationVersion;
 
             internal IntPtr UserEvents;
-
             internal uint UserVersion;
 
             internal IntPtr ImageEvents;
-
             internal uint ImageVersion;
 
             internal IntPtr ActivityEvents;
-
             internal uint ActivityVersion;
 
             internal IntPtr RelationshipEvents;
-
             internal uint RelationshipVersion;
 
             internal IntPtr LobbyEvents;
-
             internal uint LobbyVersion;
 
             internal IntPtr NetworkEvents;
-
             internal uint NetworkVersion;
 
             internal IntPtr OverlayEvents;
-
             internal uint OverlayVersion;
 
             internal IntPtr StorageEvents;
-
             internal uint StorageVersion;
 
             internal IntPtr StoreEvents;
-
             internal uint StoreVersion;
 
             internal IntPtr VoiceEvents;
-
             internal uint VoiceVersion;
 
             internal IntPtr AchievementEvents;
-
             internal uint AchievementVersion;
         }
 
