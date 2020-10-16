@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 using Discord.GameSDK.Activities;
+using Discord.GameSDK.Images;
 
 namespace Discord.GameSDK
 {

@@ -1,5 +1,6 @@
 ﻿using System;
 using Discord.GameSDK.Activities;
+using Discord.GameSDK.Images;
 
 namespace Discord.GameSDK.Example
 {
@@ -35,6 +36,26 @@ namespace Discord.GameSDK.Example
 							Name = "Test App",
 							Details = "Bruh moment"
 						}, result => Console.WriteLine($"Update presence: {result}"));
+					}
+
+					if (keyInfo.Key == ConsoleKey.I)
+					{
+						const long userID = 373808840568864768;
+
+						discord.GetImageManager().Fetch(ImageHandle.User(userID), (result, handleResult) =>
+						{
+							if (result == Result.Ok)
+							{
+								ImageDimensions dimensions =
+									discord.GetImageManager().GetDimensions(ImageHandle.User(userID));
+
+								Console.WriteLine($"Voltstro image is {dimensions.Width} x {dimensions.Height} with a size of {handleResult.Size} and an ID of {handleResult.Id}");
+							}
+							else
+							{
+								Console.WriteLine("Some error occurred getting user image!");
+							}
+						} );
 					}
 
 					discord.RunCallbacks();

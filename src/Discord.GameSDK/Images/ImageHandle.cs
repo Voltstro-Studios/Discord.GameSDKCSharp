@@ -6,8 +6,24 @@ namespace Discord.GameSDK.Images
 	/// Image handle
 	/// </summary>
 	[StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
-	public partial struct ImageHandle
+	public struct ImageHandle
 	{
+		/// <summary>
+		/// Get's a user's <see cref="ImageHandle"/>
+		/// </summary>
+		/// <param name="id"></param>
+		/// <param name="size"></param>
+		/// <returns></returns>
+		public static ImageHandle User(long id, uint size = 128)
+		{
+			return new ImageHandle
+			{
+				Type = ImageType.User,
+				Id = id,
+				Size = size,
+			};
+		}
+
 		/// <summary>
 		/// The source of the image
 		/// </summary>
