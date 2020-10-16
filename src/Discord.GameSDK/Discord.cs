@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using Discord.GameSDK.Activities;
 
 namespace Discord.GameSDK
 {

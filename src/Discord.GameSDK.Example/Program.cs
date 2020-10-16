@@ -17,10 +17,15 @@ namespace Discord.GameSDK.Example
 				bool running = true;
 				while (running)
 				{
-					ConsoleKeyInfo keyInfo = System.Console.ReadKey();
+					ConsoleKeyInfo keyInfo = Console.ReadKey();
 					if (keyInfo.Key == ConsoleKey.Spacebar)
 					{
 						running = false;
+					}
+
+					if (keyInfo.Key == ConsoleKey.Backspace)
+					{
+						discord.GetActivityManager().ClearActivity(result => Console.WriteLine($"Clear presence: {result}"));
 					}
 
 					if (keyInfo.Key == ConsoleKey.Enter)
