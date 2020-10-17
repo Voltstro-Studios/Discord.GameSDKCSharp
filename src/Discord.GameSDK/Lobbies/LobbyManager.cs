@@ -770,7 +770,7 @@ namespace Discord.GameSDK.Lobbies
 		{
 			GCHandle h = GCHandle.FromIntPtr(ptr);
 			Discord d = (Discord) h.Target;
-			if (d.LobbyManagerInstance.OnLobbyUpdate != null) d.LobbyManagerInstance.OnLobbyUpdate.Invoke(lobbyId);
+			d.LobbyManagerInstance.OnLobbyUpdate?.Invoke(lobbyId);
 		}
 
 		[MonoPInvokeCallback]
@@ -778,8 +778,7 @@ namespace Discord.GameSDK.Lobbies
 		{
 			GCHandle h = GCHandle.FromIntPtr(ptr);
 			Discord d = (Discord) h.Target;
-			if (d.LobbyManagerInstance.OnLobbyDelete != null)
-				d.LobbyManagerInstance.OnLobbyDelete.Invoke(lobbyId, reason);
+			d.LobbyManagerInstance.OnLobbyDelete?.Invoke(lobbyId, reason);
 		}
 
 		[MonoPInvokeCallback]
@@ -787,8 +786,7 @@ namespace Discord.GameSDK.Lobbies
 		{
 			GCHandle h = GCHandle.FromIntPtr(ptr);
 			Discord d = (Discord) h.Target;
-			if (d.LobbyManagerInstance.OnMemberConnect != null)
-				d.LobbyManagerInstance.OnMemberConnect.Invoke(lobbyId, userId);
+			d.LobbyManagerInstance.OnMemberConnect?.Invoke(lobbyId, userId);
 		}
 
 		[MonoPInvokeCallback]
@@ -796,8 +794,7 @@ namespace Discord.GameSDK.Lobbies
 		{
 			GCHandle h = GCHandle.FromIntPtr(ptr);
 			Discord d = (Discord) h.Target;
-			if (d.LobbyManagerInstance.OnMemberUpdate != null)
-				d.LobbyManagerInstance.OnMemberUpdate.Invoke(lobbyId, userId);
+			d.LobbyManagerInstance.OnMemberUpdate?.Invoke(lobbyId, userId);
 		}
 
 		[MonoPInvokeCallback]
@@ -805,8 +802,7 @@ namespace Discord.GameSDK.Lobbies
 		{
 			GCHandle h = GCHandle.FromIntPtr(ptr);
 			Discord d = (Discord) h.Target;
-			if (d.LobbyManagerInstance.OnMemberDisconnect != null)
-				d.LobbyManagerInstance.OnMemberDisconnect.Invoke(lobbyId, userId);
+			d.LobbyManagerInstance.OnMemberDisconnect?.Invoke(lobbyId, userId);
 		}
 
 		[MonoPInvokeCallback]
@@ -814,12 +810,11 @@ namespace Discord.GameSDK.Lobbies
 		{
 			GCHandle h = GCHandle.FromIntPtr(ptr);
 			Discord d = (Discord) h.Target;
-			if (d.LobbyManagerInstance.OnLobbyMessage != null)
-			{
-				byte[] data = new byte[dataLen];
-				Marshal.Copy(dataPtr, data, 0, dataLen);
-				d.LobbyManagerInstance.OnLobbyMessage.Invoke(lobbyId, userId, data);
-			}
+			if (d.LobbyManagerInstance.OnLobbyMessage == null) return;
+
+			byte[] data = new byte[dataLen];
+			Marshal.Copy(dataPtr, data, 0, dataLen);
+			d.LobbyManagerInstance.OnLobbyMessage.Invoke(lobbyId, userId, data);
 		}
 
 		[MonoPInvokeCallback]
@@ -827,8 +822,7 @@ namespace Discord.GameSDK.Lobbies
 		{
 			GCHandle h = GCHandle.FromIntPtr(ptr);
 			Discord d = (Discord) h.Target;
-			if (d.LobbyManagerInstance.OnSpeaking != null)
-				d.LobbyManagerInstance.OnSpeaking.Invoke(lobbyId, userId, speaking);
+			d.LobbyManagerInstance.OnSpeaking?.Invoke(lobbyId, userId, speaking);
 		}
 
 		[MonoPInvokeCallback]
@@ -837,12 +831,11 @@ namespace Discord.GameSDK.Lobbies
 		{
 			GCHandle h = GCHandle.FromIntPtr(ptr);
 			Discord d = (Discord) h.Target;
-			if (d.LobbyManagerInstance.OnNetworkMessage != null)
-			{
-				byte[] data = new byte[dataLen];
-				Marshal.Copy(dataPtr, data, 0, dataLen);
-				d.LobbyManagerInstance.OnNetworkMessage.Invoke(lobbyId, userId, channelId, data);
-			}
+			if (d.LobbyManagerInstance.OnNetworkMessage == null) return;
+
+			byte[] data = new byte[dataLen];
+			Marshal.Copy(dataPtr, data, 0, dataLen);
+			d.LobbyManagerInstance.OnNetworkMessage.Invoke(lobbyId, userId, channelId, data);
 		}
 
 		[StructLayout(LayoutKind.Sequential)]
