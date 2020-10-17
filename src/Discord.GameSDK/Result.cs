@@ -73,7 +73,7 @@
 		InvalidJoinSecret = 12,
 
 		/// <summary>
-		/// You accidentally set an <see cref="Activity.ApplicationId"/> in your <see cref="ActivityManager.UpdateActivity"/> payload
+		/// You accidentally set an <see cref="Activities.Activity.ApplicationId"/> in your <see cref="Activities.ActivityManager.UpdateActivity"/> payload
 		/// </summary>
 		NoEligibleActivity = 13,
 
