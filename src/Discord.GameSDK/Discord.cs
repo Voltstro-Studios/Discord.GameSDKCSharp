@@ -9,6 +9,7 @@ using Discord.GameSDK.Overlay;
 using Discord.GameSDK.Relationships;
 using Discord.GameSDK.Storage;
 using Discord.GameSDK.Store;
+using Discord.GameSDK.Users;
 using Discord.GameSDK.Voice;
 
 namespace Discord.GameSDK
