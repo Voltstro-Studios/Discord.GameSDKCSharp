@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 using Discord.GameSDK.Achievement;
 using Discord.GameSDK.Activities;
+using Discord.GameSDK.Applications;
 using Discord.GameSDK.Images;
 using Discord.GameSDK.Lobbies;
 using Discord.GameSDK.Networking;
