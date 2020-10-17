@@ -4,6 +4,7 @@ using Discord.GameSDK.Achievement;
 using Discord.GameSDK.Activities;
 using Discord.GameSDK.Images;
 using Discord.GameSDK.Lobbies;
+using Discord.GameSDK.Storage;
 using Discord.GameSDK.Voice;
 
 namespace Discord.GameSDK
