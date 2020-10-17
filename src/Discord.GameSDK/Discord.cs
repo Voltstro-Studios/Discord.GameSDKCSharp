@@ -5,6 +5,7 @@ using Discord.GameSDK.Activities;
 using Discord.GameSDK.Images;
 using Discord.GameSDK.Lobbies;
 using Discord.GameSDK.Networking;
+using Discord.GameSDK.Overlay;
 using Discord.GameSDK.Storage;
 using Discord.GameSDK.Store;
 using Discord.GameSDK.Voice;
