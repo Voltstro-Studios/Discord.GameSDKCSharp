@@ -11,7 +11,7 @@ namespace Discord.GameSDK.Voice
 	///         help you out!
 	///         Note that the main functionality for voice in this SDK is not only in this manager.
 	///         Connecting players to a voice chat happens with <see cref="Lobbies.LobbyManager.ConnectVoice" />, and robust
-	///         voice settings work through OpenVoiceSettings in the Overlay manager.
+	///         voice settings work through <see cref="Overlay.OverlayManager.OpenVoiceSettings"/>.
 	///         The Voice manager handles a few fine-grain details like self muting/deafening, swapping between VAD/PTT voice
 	///         modes, and setting a PTT key.
 	///         It's a subset of the robust settings from the overlay call for those of you that prefer to build UI and control
