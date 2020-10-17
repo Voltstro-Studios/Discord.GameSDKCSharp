@@ -6,7 +6,7 @@ namespace Discord.GameSDK.Users
 	/// <summary>
 	///     This manager helps retrieve basic user information for any user on Discord.
 	/// </summary>
-	public class UserManager
+	public sealed class UserManager
 	{
 		public delegate void CurrentUserUpdateHandler();
 

@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace Discord.GameSDK.Networking
 {
-	public class NetworkManager
+	public sealed class NetworkManager
 	{
 		public delegate void MessageHandler(ulong peerId, byte channelId, byte[] data);
 

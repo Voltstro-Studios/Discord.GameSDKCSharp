@@ -12,7 +12,7 @@ namespace Discord.GameSDK.Relationships
 	///         <item>Build a user's friends list</item>
 	///     </list>
 	/// </summary>
-	public class RelationshipManager
+	public sealed class RelationshipManager
 	{
 		public delegate bool FilterHandler(ref Relationship relationship);
 

@@ -12,7 +12,7 @@ namespace Discord.GameSDK.Overlay
 	///         <item>Allows you to change that state</item>
 	///     </list>
 	/// </summary>
-	public class OverlayManager
+	public sealed class OverlayManager
 	{
 		public delegate void OpenActivityInviteHandler(Result result);
 

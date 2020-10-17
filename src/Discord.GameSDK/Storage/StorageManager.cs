@@ -20,7 +20,7 @@ namespace Discord.GameSDK.Storage
 	///         be blocking, you don't need to be!
 	///     </para>
 	/// </summary>
-	public class StorageManager
+	public sealed class StorageManager
 	{
 		public delegate void ReadAsyncHandler(Result result, byte[] data);
 

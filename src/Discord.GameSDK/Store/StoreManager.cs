@@ -9,7 +9,7 @@ namespace Discord.GameSDK.Store
 	///     The Store Manager allows you to fetch a users' entitlements, as well as being notified when a user is granted an
 	///     entitlement from a purchase flow for your game.
 	/// </summary>
-	public class StoreManager
+	public sealed class StoreManager
 	{
 		public delegate void EntitlementCreateHandler(ref Entitlement entitlement);
 

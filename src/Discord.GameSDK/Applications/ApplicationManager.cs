@@ -22,7 +22,7 @@ namespace Discord.GameSDK.Applications
 	///         in the Dispatch CLI tool section of the documentation.
 	///     </para>
 	/// </summary>
-	public class ApplicationManager
+	public sealed class ApplicationManager
 	{
 		public delegate void GetOAuth2TokenHandler(Result result, ref OAuth2Token oauth2Token);
 

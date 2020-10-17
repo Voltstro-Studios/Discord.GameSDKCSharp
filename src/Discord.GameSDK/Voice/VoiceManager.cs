@@ -18,7 +18,7 @@ namespace Discord.GameSDK.Voice
 	///         things from your own game.
 	///     </para>
 	/// </summary>
-	public class VoiceManager
+	public sealed class VoiceManager
 	{
 		public delegate void SetInputModeHandler(Result result);
 
