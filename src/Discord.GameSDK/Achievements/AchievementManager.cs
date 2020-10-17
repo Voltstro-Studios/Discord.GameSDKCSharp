@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace Discord.GameSDK.Achievement
+namespace Discord.GameSDK.Achievements
 {
 	/// <summary>
 	///     There's no feeling quite like accomplishing a goal that you've set out to achieve.

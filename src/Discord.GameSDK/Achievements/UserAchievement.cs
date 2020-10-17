@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace Discord.GameSDK.Achievement
+namespace Discord.GameSDK.Achievements
 {
 	[StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
 	public struct UserAchievement
