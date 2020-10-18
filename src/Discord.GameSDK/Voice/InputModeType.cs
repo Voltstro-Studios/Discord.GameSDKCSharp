@@ -3,6 +3,6 @@
 	public enum InputModeType
 	{
 		VoiceActivity = 0,
-		PushToTalk,
+		PushToTalk
 	}
 }

@@ -59,7 +59,8 @@ namespace Discord.GameSDK.Users
 		///         <a href="https://discord.com/developers/docs/topics/oauth2#authorization-code-grant">
 		///             OAuth2 Authorization Code
 		///             Grant flow
-		///         </a>.
+		///         </a>
+		///         .
 		///     </para>
 		/// </summary>
 		/// <returns></returns>

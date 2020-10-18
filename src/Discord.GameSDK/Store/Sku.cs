@@ -6,23 +6,23 @@ namespace Discord.GameSDK.Store
 	public struct Sku
 	{
 		/// <summary>
-		/// The unique ID of the SKU
+		///     The unique ID of the SKU
 		/// </summary>
 		public long Id;
 
 		/// <summary>
-		/// What sort of SKU it is
+		///     What sort of SKU it is
 		/// </summary>
 		public SkuType Type;
 
 		/// <summary>
-		/// The name of the SKU
+		///     The name of the SKU
 		/// </summary>
 		[MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
 		public string Name;
 
 		/// <summary>
-		/// The price of the SKU
+		///     The price of the SKU
 		/// </summary>
 		public SkuPrice Price;
 	}

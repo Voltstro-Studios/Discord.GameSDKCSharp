@@ -1,17 +1,17 @@
 ﻿namespace Discord.GameSDK.Activities
 {
 	/// <summary>
-	/// What type is this activity action
+	///     What type is this activity action
 	/// </summary>
 	public enum ActivityActionType
 	{
 		/// <summary>
-		/// Join
+		///     Join
 		/// </summary>
 		Join = 1,
 
 		/// <summary>
-		/// Spectate
+		///     Spectate
 		/// </summary>
 		Spectate = 2
 	}

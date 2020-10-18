@@ -1,37 +1,37 @@
 ﻿namespace Discord.GameSDK.Lobbies
 {
 	/// <summary>
-	/// Lobby search comparison
+	///     Lobby search comparison
 	/// </summary>
 	public enum LobbySearchComparison
 	{
 		/// <summary>
-		/// Less that or equal
+		///     Less that or equal
 		/// </summary>
 		LessThanOrEqual = -2,
 
 		/// <summary>
-		/// Less than
+		///     Less than
 		/// </summary>
 		LessThan,
 
 		/// <summary>
-		/// Equal
+		///     Equal
 		/// </summary>
 		Equal,
 
 		/// <summary>
-		/// Greater than
+		///     Greater than
 		/// </summary>
 		GreaterThan,
 
 		/// <summary>
-		/// Greater than or equal
+		///     Greater than or equal
 		/// </summary>
 		GreaterThanOrEqual,
 
 		/// <summary>
-		/// Not equal
+		///     Not equal
 		/// </summary>
 		NotEqual
 	}

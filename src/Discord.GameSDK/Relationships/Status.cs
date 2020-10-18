@@ -1,27 +1,27 @@
 ﻿namespace Discord.GameSDK.Relationships
 {
 	/// <summary>
-	/// The status of a user
+	///     The status of a user
 	/// </summary>
 	public enum Status
 	{
 		/// <summary>
-		/// Offline
+		///     Offline
 		/// </summary>
 		Offline = 0,
 
 		/// <summary>
-		/// Online
+		///     Online
 		/// </summary>
 		Online = 1,
 
 		/// <summary>
-		/// Idle
+		///     Idle
 		/// </summary>
 		Idle = 2,
 
 		/// <summary>
-		/// Do not Disturb
+		///     Do not Disturb
 		/// </summary>
 		DoNotDisturb = 3
 	}

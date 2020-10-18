@@ -6,12 +6,12 @@ namespace Discord.GameSDK.Store
 	public struct SkuPrice
 	{
 		/// <summary>
-		/// The amount of money the SKU costs
+		///     The amount of money the SKU costs
 		/// </summary>
 		public uint Amount;
 
 		/// <summary>
-		/// The currency the amount is in
+		///     The currency the amount is in
 		/// </summary>
 		[MarshalAs(UnmanagedType.ByValTStr, SizeConst = 16)]
 		public string Currency;

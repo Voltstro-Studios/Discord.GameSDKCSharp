@@ -6,12 +6,12 @@ namespace Discord.GameSDK.Voice
 	public struct InputMode
 	{
 		/// <summary>
-		/// Set either VAD or PTT as the voice input mode
+		///     Set either VAD or PTT as the voice input mode
 		/// </summary>
 		public InputModeType Type;
 
 		/// <summary>
-		/// The PTT hotkey for the user
+		///     The PTT hotkey for the user
 		/// </summary>
 		[MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
 		public string Shortcut;

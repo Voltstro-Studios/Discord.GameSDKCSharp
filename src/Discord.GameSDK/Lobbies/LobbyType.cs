@@ -1,17 +1,17 @@
 ﻿namespace Discord.GameSDK.Lobbies
 {
 	/// <summary>
-	/// The lobby type
+	///     The lobby type
 	/// </summary>
 	public enum LobbyType
 	{
 		/// <summary>
-		/// Private lobby
+		///     Private lobby
 		/// </summary>
 		Private = 1,
 
 		/// <summary>
-		/// Public lobby
+		///     Public lobby
 		/// </summary>
 		Public
 	}
