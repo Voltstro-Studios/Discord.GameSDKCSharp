@@ -149,6 +149,7 @@ namespace Discord.GameSDK.Lobbies
 		///     Gets a Lobby transaction used for creating a new lobby
 		/// </summary>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public LobbyTransaction GetLobbyCreateTransaction()
 		{
 			LobbyTransaction ret = new LobbyTransaction();
@@ -164,6 +165,7 @@ namespace Discord.GameSDK.Lobbies
 		/// </summary>
 		/// <param name="lobbyId"></param>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public LobbyTransaction GetLobbyUpdateTransaction(long lobbyId)
 		{
 			LobbyTransaction ret = new LobbyTransaction();
@@ -180,6 +182,7 @@ namespace Discord.GameSDK.Lobbies
 		/// <param name="lobbyId"></param>
 		/// <param name="userId"></param>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public LobbyMemberTransaction GetMemberUpdateTransaction(long lobbyId, long userId)
 		{
 			LobbyMemberTransaction ret = new LobbyMemberTransaction();
@@ -278,6 +281,7 @@ namespace Discord.GameSDK.Lobbies
 		/// </summary>
 		/// <param name="lobbyId"></param>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public Lobby GetLobby(long lobbyId)
 		{
 			Lobby ret = new Lobby();
@@ -295,6 +299,7 @@ namespace Discord.GameSDK.Lobbies
 		/// </summary>
 		/// <param name="lobbyId"></param>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public string GetLobbyActivitySecret(long lobbyId)
 		{
 			StringBuilder ret = new StringBuilder(128);
@@ -311,6 +316,7 @@ namespace Discord.GameSDK.Lobbies
 		/// <param name="lobbyId"></param>
 		/// <param name="key"></param>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public string GetLobbyMetadataValue(long lobbyId, string key)
 		{
 			StringBuilder ret = new StringBuilder(4096);
@@ -327,6 +333,7 @@ namespace Discord.GameSDK.Lobbies
 		/// <param name="lobbyId"></param>
 		/// <param name="index"></param>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public string GetLobbyMetadataKey(long lobbyId, int index)
 		{
 			StringBuilder ret = new StringBuilder(256);
@@ -343,6 +350,7 @@ namespace Discord.GameSDK.Lobbies
 		/// </summary>
 		/// <param name="lobbyId"></param>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public int LobbyMetadataCount(long lobbyId)
 		{
 			int ret = new int();
@@ -358,6 +366,7 @@ namespace Discord.GameSDK.Lobbies
 		/// </summary>
 		/// <param name="lobbyId"></param>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public int MemberCount(long lobbyId)
 		{
 			int ret = new int();
@@ -374,6 +383,7 @@ namespace Discord.GameSDK.Lobbies
 		/// <param name="lobbyId"></param>
 		/// <param name="index"></param>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public long GetMemberUserId(long lobbyId, int index)
 		{
 			long ret = new long();
@@ -390,6 +400,7 @@ namespace Discord.GameSDK.Lobbies
 		/// <param name="lobbyId"></param>
 		/// <param name="userId"></param>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public User GetMemberUser(long lobbyId, long userId)
 		{
 			User ret = new User();
@@ -422,6 +433,7 @@ namespace Discord.GameSDK.Lobbies
 		/// <param name="userId"></param>
 		/// <param name="key"></param>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public string GetMemberMetadataValue(long lobbyId, long userId, string key)
 		{
 			StringBuilder ret = new StringBuilder(4096);
@@ -439,6 +451,7 @@ namespace Discord.GameSDK.Lobbies
 		/// <param name="userId"></param>
 		/// <param name="index"></param>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public string GetMemberMetadataKey(long lobbyId, long userId, int index)
 		{
 			StringBuilder ret = new StringBuilder(256);
@@ -456,6 +469,7 @@ namespace Discord.GameSDK.Lobbies
 		/// <param name="lobbyId"></param>
 		/// <param name="userId"></param>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public int MemberMetadataCount(long lobbyId, long userId)
 		{
 			int ret = new int();
@@ -516,6 +530,7 @@ namespace Discord.GameSDK.Lobbies
 		///     Creates a search object to search available lobbies.
 		/// </summary>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public LobbySearchQuery GetSearchQuery()
 		{
 			LobbySearchQuery ret = new LobbySearchQuery();
@@ -558,6 +573,7 @@ namespace Discord.GameSDK.Lobbies
 		/// </summary>
 		/// <param name="index"></param>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public long GetLobbyId(int index)
 		{
 			long ret = new long();
@@ -606,6 +622,7 @@ namespace Discord.GameSDK.Lobbies
 		///     Connects to the networking layer for the given lobby ID. Call this when connecting to the lobby.
 		/// </summary>
 		/// <param name="lobbyId"></param>
+		/// <exception cref="ResultException"></exception>
 		public void ConnectNetwork(long lobbyId)
 		{
 			Result res = Methods.ConnectNetwork(methodsPtr, lobbyId);
@@ -618,6 +635,7 @@ namespace Discord.GameSDK.Lobbies
 		///     Disconnects from the networking layer for the given lobby ID.
 		/// </summary>
 		/// <param name="lobbyId"></param>
+		/// <exception cref="ResultException"></exception>
 		public void DisconnectNetwork(long lobbyId)
 		{
 			Result res = Methods.DisconnectNetwork(methodsPtr, lobbyId);
@@ -629,6 +647,7 @@ namespace Discord.GameSDK.Lobbies
 		/// <summary>
 		///     Flushes the network. Call this when you're done sending messages. In Unity, this should be in <c>LateUpdate()</c>.
 		/// </summary>
+		/// <exception cref="ResultException"></exception>
 		public void FlushNetwork()
 		{
 			Result res = Methods.FlushNetwork(methodsPtr);
@@ -643,6 +662,7 @@ namespace Discord.GameSDK.Lobbies
 		/// <param name="lobbyId"></param>
 		/// <param name="channelId"></param>
 		/// <param name="reliable"></param>
+		/// <exception cref="ResultException"></exception>
 		public void OpenNetworkChannel(long lobbyId, byte channelId, bool reliable)
 		{
 			Result res = Methods.OpenNetworkChannel(methodsPtr, lobbyId, channelId, reliable);
@@ -658,6 +678,7 @@ namespace Discord.GameSDK.Lobbies
 		/// <param name="userId"></param>
 		/// <param name="channelId"></param>
 		/// <param name="data"></param>
+		/// <exception cref="ResultException"></exception>
 		public void SendNetworkMessage(long lobbyId, long userId, byte channelId, byte[] data)
 		{
 			Result res = Methods.SendNetworkMessage(methodsPtr, lobbyId, userId, channelId, data, data.Length);

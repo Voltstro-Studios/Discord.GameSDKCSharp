@@ -63,6 +63,7 @@ namespace Discord.GameSDK.Images
 		/// </summary>
 		/// <param name="handle"></param>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public ImageDimensions GetDimensions(ImageHandle handle)
 		{
 			ImageDimensions ret = new ImageDimensions();
@@ -89,6 +90,7 @@ namespace Discord.GameSDK.Images
 		/// </summary>
 		/// <param name="handle"></param>
 		/// <param name="data"></param>
+		/// <exception cref="ResultException"></exception>
 		public void GetData(ImageHandle handle, byte[] data)
 		{
 			Result res = Methods.GetData(methodsPtr, handle, data, data.Length);

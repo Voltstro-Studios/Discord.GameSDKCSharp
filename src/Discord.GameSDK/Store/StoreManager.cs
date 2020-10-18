@@ -103,6 +103,7 @@ namespace Discord.GameSDK.Store
 		/// </summary>
 		/// <param name="skuId"></param>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public Sku GetSku(long skuId)
 		{
 			Sku ret = new Sku();
@@ -117,6 +118,7 @@ namespace Discord.GameSDK.Store
 		/// </summary>
 		/// <param name="index"></param>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public Sku GetSkuAt(int index)
 		{
 			Sku ret = new Sku();
@@ -168,6 +170,7 @@ namespace Discord.GameSDK.Store
 		/// </summary>
 		/// <param name="entitlementId"></param>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public Entitlement GetEntitlement(long entitlementId)
 		{
 			Entitlement ret = new Entitlement();
@@ -182,6 +185,7 @@ namespace Discord.GameSDK.Store
 		/// </summary>
 		/// <param name="index"></param>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public Entitlement GetEntitlementAt(int index)
 		{
 			Entitlement ret = new Entitlement();
@@ -196,6 +200,7 @@ namespace Discord.GameSDK.Store
 		/// </summary>
 		/// <param name="skuId"></param>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public bool HasSkuEntitlement(long skuId)
 		{
 			bool ret = new bool();

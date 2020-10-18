@@ -99,6 +99,7 @@ namespace Discord.GameSDK.Achievements
 		/// </summary>
 		/// <param name="userAchievementId"></param>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public UserAchievement GetUserAchievement(long userAchievementId)
 		{
 			UserAchievement ret = new UserAchievement();
@@ -112,6 +113,7 @@ namespace Discord.GameSDK.Achievements
 		/// </summary>
 		/// <param name="index"></param>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public UserAchievement GetUserAchievementAt(int index)
 		{
 			UserAchievement ret = new UserAchievement();

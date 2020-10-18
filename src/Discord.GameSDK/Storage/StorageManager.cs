@@ -61,6 +61,7 @@ namespace Discord.GameSDK.Storage
 		/// <param name="name"></param>
 		/// <param name="data"></param>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public uint Read(string name, byte[] data)
 		{
 			uint ret = new uint();
@@ -100,6 +101,7 @@ namespace Discord.GameSDK.Storage
 		/// </summary>
 		/// <param name="name"></param>
 		/// <param name="data"></param>
+		/// <exception cref="ResultException"></exception>
 		public void Write(string name, byte[] data)
 		{
 			Result res = Methods.Write(methodsPtr, name, data, data.Length);
@@ -122,6 +124,7 @@ namespace Discord.GameSDK.Storage
 		///     Deletes written data for the given key name.
 		/// </summary>
 		/// <param name="name"></param>
+		/// <exception cref="ResultException"></exception>
 		public void Delete(string name)
 		{
 			Result res = Methods.Delete(methodsPtr, name);
@@ -133,6 +136,7 @@ namespace Discord.GameSDK.Storage
 		/// </summary>
 		/// <param name="name"></param>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public bool Exists(string name)
 		{
 			bool ret = new bool();
@@ -146,6 +150,7 @@ namespace Discord.GameSDK.Storage
 		/// </summary>
 		/// <param name="name"></param>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public FileStat Stat(string name)
 		{
 			FileStat ret = new FileStat();
@@ -182,6 +187,7 @@ namespace Discord.GameSDK.Storage
 		/// </summary>
 		/// <param name="index"></param>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public FileStat StatAt(int index)
 		{
 			FileStat ret = new FileStat();
@@ -199,6 +205,7 @@ namespace Discord.GameSDK.Storage
 		///     <para>Value from environment variable <c>DISCORD_STORAGE_PATH</c></para>
 		/// </summary>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public string GetPath()
 		{
 			StringBuilder ret = new StringBuilder(4096);

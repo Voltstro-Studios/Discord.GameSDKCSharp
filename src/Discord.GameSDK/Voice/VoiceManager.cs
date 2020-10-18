@@ -62,6 +62,7 @@ namespace Discord.GameSDK.Voice
 		///     Get the current voice input mode for the user.
 		/// </summary>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public InputMode GetInputMode()
 		{
 			InputMode ret = new InputMode();
@@ -87,6 +88,7 @@ namespace Discord.GameSDK.Voice
 		///     Whether the connected user is currently muted.
 		/// </summary>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public bool IsSelfMute()
 		{
 			bool ret = new bool();
@@ -99,6 +101,7 @@ namespace Discord.GameSDK.Voice
 		///     Mutes or unmutes the currently connected user.
 		/// </summary>
 		/// <param name="mute"></param>
+		/// <exception cref="ResultException"></exception>
 		public void SetSelfMute(bool mute)
 		{
 			Result res = Methods.SetSelfMute(methodsPtr, mute);
@@ -109,6 +112,7 @@ namespace Discord.GameSDK.Voice
 		///     Whether the connected user is currently deafened.
 		/// </summary>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public bool IsSelfDeaf()
 		{
 			bool ret = new bool();
@@ -121,6 +125,7 @@ namespace Discord.GameSDK.Voice
 		///     Deafens or undefeans the currently connected user.
 		/// </summary>
 		/// <param name="deaf"></param>
+		/// <exception cref="ResultException"></exception>
 		public void SetSelfDeaf(bool deaf)
 		{
 			Result res = Methods.SetSelfDeaf(methodsPtr, deaf);
@@ -132,6 +137,7 @@ namespace Discord.GameSDK.Voice
 		/// </summary>
 		/// <param name="userId"></param>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public bool IsLocalMute(long userId)
 		{
 			bool ret = new bool();
@@ -145,6 +151,7 @@ namespace Discord.GameSDK.Voice
 		/// </summary>
 		/// <param name="userId"></param>
 		/// <param name="mute"></param>
+		/// <exception cref="ResultException"></exception>
 		public void SetLocalMute(long userId, bool mute)
 		{
 			Result res = Methods.SetLocalMute(methodsPtr, userId, mute);
@@ -157,6 +164,7 @@ namespace Discord.GameSDK.Voice
 		/// </summary>
 		/// <param name="userId"></param>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public byte GetLocalVolume(long userId)
 		{
 			byte ret = new byte();
@@ -173,6 +181,7 @@ namespace Discord.GameSDK.Voice
 		/// </summary>
 		/// <param name="userId"></param>
 		/// <param name="volume"></param>
+		/// <exception cref="ResultException"></exception>
 		public void SetLocalVolume(long userId, byte volume)
 		{
 			Result res = Methods.SetLocalVolume(methodsPtr, userId, volume);

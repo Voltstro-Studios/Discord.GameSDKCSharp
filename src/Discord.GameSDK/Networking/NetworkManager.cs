@@ -65,6 +65,7 @@ namespace Discord.GameSDK.Networking
 		///     Flushes the network. Run this at the end of your game's loop, once you've finished sending all you need to send. In
 		///     Unity, for example, stick this in <c>LateUpdate()</c>.
 		/// </summary>
+		/// <exception cref="ResultException"></exception>
 		public void Flush()
 		{
 			Result res = Methods.Flush(methodsPtr);
@@ -74,6 +75,7 @@ namespace Discord.GameSDK.Networking
 		/// <summary>
 		///     Opens a network connection to another Discord user.
 		/// </summary>
+		/// <exception cref="ResultException"></exception>
 		public void OpenPeer(ulong peerId, string routeData)
 		{
 			Result res = Methods.OpenPeer(methodsPtr, peerId, routeData);
@@ -85,6 +87,7 @@ namespace Discord.GameSDK.Networking
 		///     You'll want to call this when notified that the route for a user to which you are connected has changed, most
 		///     likely from a lobby member update event.
 		/// </summary>
+		/// <exception cref="ResultException"></exception>
 		public void UpdatePeer(ulong peerId, string routeData)
 		{
 			Result res = Methods.UpdatePeer(methodsPtr, peerId, routeData);
@@ -94,6 +97,7 @@ namespace Discord.GameSDK.Networking
 		/// <summary>
 		///     Disconnects the network session to another Discord user.
 		/// </summary>
+		/// <exception cref="ResultException"></exception>
 		public void ClosePeer(ulong peerId)
 		{
 			Result res = Methods.ClosePeer(methodsPtr, peerId);
@@ -107,6 +111,7 @@ namespace Discord.GameSDK.Networking
 		///         channels should be used for data that must get to the user, like loot drops!
 		///     </para>
 		/// </summary>
+		/// <exception cref="ResultException"></exception>
 		public void OpenChannel(ulong peerId, byte channelId, bool reliable)
 		{
 			Result res = Methods.OpenChannel(methodsPtr, peerId, channelId, reliable);
@@ -116,6 +121,7 @@ namespace Discord.GameSDK.Networking
 		/// <summary>
 		///     Close the connection to a given user by peerId on the given channel.
 		/// </summary>
+		/// <exception cref="ResultException"></exception>
 		public void CloseChannel(ulong peerId, byte channelId)
 		{
 			Result res = Methods.CloseChannel(methodsPtr, peerId, channelId);
@@ -125,6 +131,7 @@ namespace Discord.GameSDK.Networking
 		/// <summary>
 		///     Sends data to a given peer ID through the given channel.
 		/// </summary>
+		/// <exception cref="ResultException"></exception>
 		public void SendMessage(ulong peerId, byte channelId, byte[] data)
 		{
 			Result res = Methods.SendMessage(methodsPtr, peerId, channelId, data, data.Length);

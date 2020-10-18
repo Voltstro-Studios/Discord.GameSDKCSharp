@@ -91,6 +91,7 @@ namespace Discord.GameSDK.Activities
 		///     </para>
 		/// </summary>
 		/// <param name="command"></param>
+		/// <exception cref="ResultException"></exception>
 		public void RegisterCommand(string command)
 		{
 			Result res = Methods.RegisterCommand(methodsPtr, command);
@@ -102,6 +103,7 @@ namespace Discord.GameSDK.Activities
 		///     <c>steam://run-game-id/id</c>.
 		/// </summary>
 		/// <param name="steamId"></param>
+		/// <exception cref="ResultException"></exception>
 		public void RegisterSteam(uint steamId)
 		{
 			Result res = Methods.RegisterSteam(methodsPtr, steamId);

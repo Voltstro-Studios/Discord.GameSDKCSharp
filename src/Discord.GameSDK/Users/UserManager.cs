@@ -63,6 +63,7 @@ namespace Discord.GameSDK.Users
 		///     </para>
 		/// </summary>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public User GetCurrentUser()
 		{
 			User ret = new User();
@@ -86,6 +87,7 @@ namespace Discord.GameSDK.Users
 		///     Get the <see cref="PremiumType" /> for the currently connected user.
 		/// </summary>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public PremiumType GetCurrentUserPremiumType()
 		{
 			PremiumType ret = new PremiumType();
@@ -99,6 +101,7 @@ namespace Discord.GameSDK.Users
 		/// </summary>
 		/// <param name="flag"></param>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public bool CurrentUserHasFlag(UserFlag flag)
 		{
 			bool ret = new bool();

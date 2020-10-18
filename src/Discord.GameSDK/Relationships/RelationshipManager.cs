@@ -74,6 +74,7 @@ namespace Discord.GameSDK.Relationships
 		///     Get the number of relationships that match your <see cref="Filter" />.
 		/// </summary>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public int Count()
 		{
 			int ret = new int();
@@ -87,6 +88,7 @@ namespace Discord.GameSDK.Relationships
 		/// </summary>
 		/// <param name="userId"></param>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public Relationship Get(long userId)
 		{
 			Relationship ret = new Relationship();
@@ -100,6 +102,7 @@ namespace Discord.GameSDK.Relationships
 		/// </summary>
 		/// <param name="index"></param>
 		/// <returns></returns>
+		/// <exception cref="ResultException"></exception>
 		public Relationship GetAt(uint index)
 		{
 			Relationship ret = new Relationship();
