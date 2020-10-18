@@ -13,6 +13,7 @@ namespace Discord.GameSDK.Example
 			try
 			{
 				Discord discord = new Discord(758184866411315221, CreateFlags.Default);
+				discord.Init();
 				discord.SetLogHook(LogLevel.Debug, (level, message) => Console.WriteLine(message));
 
 				bool running = true;

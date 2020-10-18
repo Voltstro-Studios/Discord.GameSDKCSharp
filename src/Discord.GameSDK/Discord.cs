@@ -22,33 +22,32 @@ namespace Discord.GameSDK
 	{
 		public const string NativeLibraryName = "discord_game_sdk";
 
+		/// <summary>
+		/// Is the Discord game SDK initialized or not
+		/// </summary>
+		public static bool IsInitialized;
+
 		public delegate void SetLogHookHandler(LogLevel level, string message);
 
-		private readonly IntPtr achievementEventsPtr;
+		private readonly long clientId;
+		private readonly CreateFlags createFlags;
 
+		private IntPtr eventsPtr;
+		private IntPtr methodsPtr;
+
+		private readonly IntPtr achievementEventsPtr;
 		private readonly IntPtr activityEventsPtr;
 		private readonly IntPtr applicationEventsPtr;
-		private readonly IntPtr eventsPtr;
-
 		private readonly IntPtr imageEventsPtr;
-
 		private readonly IntPtr lobbyEventsPtr;
-
-		private readonly IntPtr methodsPtr;
-
 		private readonly IntPtr networkEventsPtr;
-
 		private readonly IntPtr overlayEventsPtr;
-
 		private readonly IntPtr relationshipEventsPtr;
-
 		private readonly IntPtr storageEventsPtr;
-
 		private readonly IntPtr storeEventsPtr;
-
 		private readonly IntPtr userEventsPtr;
-
 		private readonly IntPtr voiceEventsPtr;
+
 		private AchievementManager.FFIEvents achievementEvents;
 		internal AchievementManager AchievementManagerInstance;
 		private ActivityManager.FFIEvents activityEvents;
@@ -84,84 +83,100 @@ namespace Discord.GameSDK
 		///     Creates an instance of Discord to initialize the SDK. This is the overlord of all things Discord. We like to call
 		///     her Nelly.
 		/// </summary>
-		/// <param name="clientId"></param>
-		/// <param name="flags"></param>
-		/// <exception cref="ResultException"></exception>
+		/// <exception cref="InitializedException"></exception>
 		public Discord(long clientId, CreateFlags flags)
 		{
-			FFICreateParams createParams;
-			createParams.ClientId = clientId;
-			createParams.Flags = (ulong) flags;
+			if(IsInitialized)
+				throw new InitializedException("The Discord game SDK is already initialized!");
 
-			FFIEvents events = new FFIEvents();
-			eventsPtr = Marshal.AllocHGlobal(Marshal.SizeOf(events));
-			createParams.Events = eventsPtr;
+			this.clientId = clientId;
+			createFlags = flags;
 
 			selfHandle = GCHandle.Alloc(this);
-			createParams.EventData = GCHandle.ToIntPtr(selfHandle);
 
 			applicationEvents = new ApplicationManager.FFIEvents();
 			applicationEventsPtr = Marshal.AllocHGlobal(Marshal.SizeOf(applicationEvents));
-			createParams.ApplicationEvents = applicationEventsPtr;
-			createParams.ApplicationVersion = 1;
 
 			userEvents = new UserManager.FFIEvents();
 			userEventsPtr = Marshal.AllocHGlobal(Marshal.SizeOf(userEvents));
-			createParams.UserEvents = userEventsPtr;
-			createParams.UserVersion = 1;
 
 			imageEvents = new ImageManager.FFIEvents();
 			imageEventsPtr = Marshal.AllocHGlobal(Marshal.SizeOf(imageEvents));
-			createParams.ImageEvents = imageEventsPtr;
-			createParams.ImageVersion = 1;
 
 			activityEvents = new ActivityManager.FFIEvents();
 			activityEventsPtr = Marshal.AllocHGlobal(Marshal.SizeOf(activityEvents));
-			createParams.ActivityEvents = activityEventsPtr;
-			createParams.ActivityVersion = 1;
 
 			relationshipEvents = new RelationshipManager.FFIEvents();
 			relationshipEventsPtr = Marshal.AllocHGlobal(Marshal.SizeOf(relationshipEvents));
-			createParams.RelationshipEvents = relationshipEventsPtr;
-			createParams.RelationshipVersion = 1;
 
 			lobbyEvents = new LobbyManager.FFIEvents();
 			lobbyEventsPtr = Marshal.AllocHGlobal(Marshal.SizeOf(lobbyEvents));
-			createParams.LobbyEvents = lobbyEventsPtr;
-			createParams.LobbyVersion = 1;
 
 			networkEvents = new NetworkManager.FFIEvents();
 			networkEventsPtr = Marshal.AllocHGlobal(Marshal.SizeOf(networkEvents));
-			createParams.NetworkEvents = networkEventsPtr;
-			createParams.NetworkVersion = 1;
 
 			overlayEvents = new OverlayManager.FFIEvents();
 			overlayEventsPtr = Marshal.AllocHGlobal(Marshal.SizeOf(overlayEvents));
-			createParams.OverlayEvents = overlayEventsPtr;
-			createParams.OverlayVersion = 1;
 
 			storageEvents = new StorageManager.FFIEvents();
 			storageEventsPtr = Marshal.AllocHGlobal(Marshal.SizeOf(storageEvents));
-			createParams.StorageEvents = storageEventsPtr;
-			createParams.StorageVersion = 1;
 
 			storeEvents = new StoreManager.FFIEvents();
 			storeEventsPtr = Marshal.AllocHGlobal(Marshal.SizeOf(storeEvents));
-			createParams.StoreEvents = storeEventsPtr;
-			createParams.StoreVersion = 1;
 
 			voiceEvents = new VoiceManager.FFIEvents();
 			voiceEventsPtr = Marshal.AllocHGlobal(Marshal.SizeOf(voiceEvents));
-			createParams.VoiceEvents = voiceEventsPtr;
-			createParams.VoiceVersion = 1;
 
 			achievementEvents = new AchievementManager.FFIEvents();
 			achievementEventsPtr = Marshal.AllocHGlobal(Marshal.SizeOf(achievementEvents));
+		}
+
+		/// <summary>
+		/// Initializes the Discord game SDK
+		/// </summary>
+		/// <exception cref="InitializedException"></exception>
+		/// <exception cref="ResultException"></exception>
+		public void Init()
+		{
+			if(IsInitialized)
+				throw new InitializedException("The Discord game SDK is already initialized!");
+
+			FFIEvents events = new FFIEvents();
+			eventsPtr = Marshal.AllocHGlobal(Marshal.SizeOf(events));
+
+			FFICreateParams createParams;
+			createParams.ClientId = clientId;
+			createParams.Flags = (ulong) createFlags;
+			createParams.Events = eventsPtr;
+			createParams.EventData = GCHandle.ToIntPtr(selfHandle);
+			createParams.ApplicationEvents = applicationEventsPtr;
+			createParams.ApplicationVersion = 1;
+			createParams.UserEvents = userEventsPtr;
+			createParams.UserVersion = 1;
+			createParams.ImageEvents = imageEventsPtr;
+			createParams.ImageVersion = 1;
+			createParams.ActivityEvents = activityEventsPtr;
+			createParams.ActivityVersion = 1;
+			createParams.RelationshipEvents = relationshipEventsPtr;
+			createParams.RelationshipVersion = 1;
+			createParams.LobbyEvents = lobbyEventsPtr;
+			createParams.LobbyVersion = 1;
+			createParams.NetworkEvents = networkEventsPtr;
+			createParams.NetworkVersion = 1;
+			createParams.OverlayEvents = overlayEventsPtr;
+			createParams.OverlayVersion = 1;
+			createParams.StorageEvents = storageEventsPtr;
+			createParams.StorageVersion = 1;
+			createParams.StoreEvents = storeEventsPtr;
+			createParams.StoreVersion = 1;
+			createParams.VoiceEvents = voiceEventsPtr;
+			createParams.VoiceVersion = 1;
 			createParams.AchievementEvents = achievementEventsPtr;
 			createParams.AchievementVersion = 1;
 
 			InitEvents(eventsPtr, ref events);
 
+			IsInitialized = true;
 			Result result = DiscordCreate(2, ref createParams, out methodsPtr);
 			if (result != Result.Ok)
 			{
@@ -182,8 +197,12 @@ namespace Discord.GameSDK
 		/// <summary>
 		///     Destroys the instance. Wave goodbye, Nelly! You monster.
 		/// </summary>
+		/// <exception cref="InitializedException"></exception>
 		public void Dispose()
 		{
+			if(!IsInitialized)
+				throw new InitializedException("The Discord game SDK is already not initialized!");
+
 			if (methodsPtr != IntPtr.Zero) Methods.Destroy(methodsPtr);
 
 			selfHandle.Free();
@@ -217,9 +236,13 @@ namespace Discord.GameSDK
 		///         <see cref="Result.NotRunning" />.
 		///     </para>
 		/// </summary>
+		/// <exception cref="InitializedException"></exception>
 		/// <exception cref="ResultException"></exception>
 		public void RunCallbacks()
 		{
+			if(!IsInitialized)
+				throw new InitializedException("The Discord game SDK is not initialized!");
+
 			Result res = Methods.RunCallbacks(methodsPtr);
 			if (res != Result.Ok) throw new ResultException(res);
 		}
@@ -229,8 +252,12 @@ namespace Discord.GameSDK
 		/// </summary>
 		/// <param name="minLevel"></param>
 		/// <param name="callback"></param>
+		/// <exception cref="InitializedException"></exception>
 		public void SetLogHook(LogLevel minLevel, SetLogHookHandler callback)
 		{
+			if(!IsInitialized)
+				throw new InitializedException("The Discord game SDK is not initialized!");
+
 			setLogHook?.Free();
 			setLogHook = GCHandle.Alloc(callback);
 			Methods.SetLogHook(methodsPtr, minLevel, GCHandle.ToIntPtr(setLogHook.Value), SetLogHookCallbackImpl);
@@ -240,8 +267,12 @@ namespace Discord.GameSDK
 		///     Fetches an instance of the manager for interfacing with applications in the SDK.
 		/// </summary>
 		/// <returns></returns>
+		/// <exception cref="InitializedException"></exception>
 		public ApplicationManager GetApplicationManager()
 		{
+			if(!IsInitialized)
+				throw new InitializedException("The Discord game SDK is not initialized!");
+
 			return ApplicationManagerInstance ?? (ApplicationManagerInstance = new ApplicationManager(
 				Methods.GetApplicationManager(methodsPtr),
 				applicationEventsPtr,
@@ -253,8 +284,12 @@ namespace Discord.GameSDK
 		///     Fetches an instance of the manager for interfacing with users in the SDK.
 		/// </summary>
 		/// <returns></returns>
+		/// <exception cref="InitializedException"></exception>
 		public UserManager GetUserManager()
 		{
+			if(!IsInitialized)
+				throw new InitializedException("The Discord game SDK is not initialized!");
+
 			return UserManagerInstance ?? (UserManagerInstance = new UserManager(
 				Methods.GetUserManager(methodsPtr),
 				userEventsPtr,
@@ -266,8 +301,12 @@ namespace Discord.GameSDK
 		///     Fetches an instance of the manager for interfacing with images in the SDK.
 		/// </summary>
 		/// <returns></returns>
+		/// <exception cref="InitializedException"></exception>
 		public ImageManager GetImageManager()
 		{
+			if(!IsInitialized)
+				throw new InitializedException("The Discord game SDK is not initialized!");
+
 			return ImageManagerInstance ?? (ImageManagerInstance = new ImageManager(
 				Methods.GetImageManager(methodsPtr),
 				imageEventsPtr,
@@ -279,8 +318,12 @@ namespace Discord.GameSDK
 		///     Fetches an instance of the manager for interfacing with activities in the SDK.
 		/// </summary>
 		/// <returns></returns>
+		/// <exception cref="InitializedException"></exception>
 		public ActivityManager GetActivityManager()
 		{
+			if(!IsInitialized)
+				throw new InitializedException("The Discord game SDK is not initialized!");
+
 			return ActivityManagerInstance ?? (ActivityManagerInstance = new ActivityManager(
 				Methods.GetActivityManager(methodsPtr),
 				activityEventsPtr,
@@ -292,8 +335,12 @@ namespace Discord.GameSDK
 		///     Fetches an instance of the manager for interfacing with relationships in the SDK.
 		/// </summary>
 		/// <returns></returns>
+		/// <exception cref="InitializedException"></exception>
 		public RelationshipManager GetRelationshipManager()
 		{
+			if(!IsInitialized)
+				throw new InitializedException("The Discord game SDK is not initialized!");
+
 			return RelationshipManagerInstance ?? (RelationshipManagerInstance = new RelationshipManager(
 				Methods.GetRelationshipManager(methodsPtr),
 				relationshipEventsPtr,
@@ -305,8 +352,12 @@ namespace Discord.GameSDK
 		///     Fetches an instance of the manager for interfacing with lobbies in the SDK.
 		/// </summary>
 		/// <returns></returns>
+		/// <exception cref="InitializedException"></exception>
 		public LobbyManager GetLobbyManager()
 		{
+			if(!IsInitialized)
+				throw new InitializedException("The Discord game SDK is not initialized!");
+
 			return LobbyManagerInstance ?? (LobbyManagerInstance = new LobbyManager(
 				Methods.GetLobbyManager(methodsPtr),
 				lobbyEventsPtr,
@@ -318,8 +369,12 @@ namespace Discord.GameSDK
 		///     Fetches an instance of the manager for interfacing with networking in the SDK.
 		/// </summary>
 		/// <returns></returns>
+		/// <exception cref="InitializedException"></exception>
 		public NetworkManager GetNetworkManager()
 		{
+			if(!IsInitialized)
+				throw new InitializedException("The Discord game SDK is not initialized!");
+
 			return NetworkManagerInstance ?? (NetworkManagerInstance = new NetworkManager(
 				Methods.GetNetworkManager(methodsPtr),
 				networkEventsPtr,
@@ -331,8 +386,12 @@ namespace Discord.GameSDK
 		///     Fetches an instance of the manager for interfacing with the overlay in the SDK.
 		/// </summary>
 		/// <returns></returns>
+		/// <exception cref="InitializedException"></exception>
 		public OverlayManager GetOverlayManager()
 		{
+			if(!IsInitialized)
+				throw new InitializedException("The Discord game SDK is not initialized!");
+
 			return OverlayManagerInstance ?? (OverlayManagerInstance = new OverlayManager(
 				Methods.GetOverlayManager(methodsPtr),
 				overlayEventsPtr,
@@ -344,8 +403,12 @@ namespace Discord.GameSDK
 		///     Fetches an instance of the manager for interfacing with storage in the SDK.
 		/// </summary>
 		/// <returns></returns>
+		/// <exception cref="InitializedException"></exception>
 		public StorageManager GetStorageManager()
 		{
+			if(!IsInitialized)
+				throw new InitializedException("The Discord game SDK is not initialized!");
+
 			return StorageManagerInstance ?? (StorageManagerInstance = new StorageManager(
 				Methods.GetStorageManager(methodsPtr),
 				storageEventsPtr,
@@ -357,8 +420,12 @@ namespace Discord.GameSDK
 		///     Fetches an instance of the manager for interfacing with SKUs and Entitlements in the SDK.
 		/// </summary>
 		/// <returns></returns>
+		/// <exception cref="InitializedException"></exception>
 		public StoreManager GetStoreManager()
 		{
+			if(!IsInitialized)
+				throw new InitializedException("The Discord game SDK is not initialized!");
+
 			return StoreManagerInstance ?? (StoreManagerInstance = new StoreManager(
 				Methods.GetStoreManager(methodsPtr),
 				storeEventsPtr,
@@ -370,8 +437,12 @@ namespace Discord.GameSDK
 		///     Fetches an instance of the manager for interfacing with voice chat in the SDK.
 		/// </summary>
 		/// <returns></returns>
+		/// <exception cref="InitializedException"></exception>
 		public VoiceManager GetVoiceManager()
 		{
+			if(!IsInitialized)
+				throw new InitializedException("The Discord game SDK is not initialized!");
+
 			return VoiceManagerInstance ?? (VoiceManagerInstance = new VoiceManager(
 				Methods.GetVoiceManager(methodsPtr),
 				voiceEventsPtr,
@@ -383,8 +454,12 @@ namespace Discord.GameSDK
 		///     Fetches an instance of the manager for interfacing with achievements in the SDK.
 		/// </summary>
 		/// <returns></returns>
+		/// <exception cref="InitializedException"></exception>
 		public AchievementManager GetAchievementManager()
 		{
+			if(!IsInitialized)
+				throw new InitializedException("The Discord game SDK is not initialized!");
+
 			return AchievementManagerInstance ?? (AchievementManagerInstance = new AchievementManager(
 				Methods.GetAchievementManager(methodsPtr),
 				achievementEventsPtr,
