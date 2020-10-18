@@ -20,6 +20,8 @@ namespace Discord.GameSDK
 	/// </summary>
 	public sealed class Discord : IDisposable
 	{
+		public const string NativeLibraryName = "discord_game_sdk";
+
 		public delegate void SetLogHookHandler(LogLevel level, string message);
 
 		private readonly IntPtr achievementEventsPtr;
@@ -203,7 +205,7 @@ namespace Discord.GameSDK
 			setLogHook?.Free();
 		}
 
-		[DllImport(Constants.DllName, ExactSpelling = true, CallingConvention = CallingConvention.Cdecl)]
+		[DllImport(NativeLibraryName, ExactSpelling = true, CallingConvention = CallingConvention.Cdecl)]
 		private static extern Result DiscordCreate(uint version, ref FFICreateParams createParams, out IntPtr manager);
 
 		/// <summary>

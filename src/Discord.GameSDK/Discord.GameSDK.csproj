@@ -6,7 +6,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ContentWithTargetPath Include="..\Libs\DiscordGameSDK.dll">
+    <ContentWithTargetPath Include="..\Libs\win-x64\discord_game_sdk.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TargetPath>%(Filename)%(Extension)</TargetPath>
+    </ContentWithTargetPath>
+    <ContentWithTargetPath Include="..\Libs\osx-x64\discord_game_sdk.dylib">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TargetPath>%(Filename)%(Extension)</TargetPath>
+    </ContentWithTargetPath>
+    <ContentWithTargetPath Include="..\Libs\linux-x64\discord_game_sdk.so">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <TargetPath>%(Filename)%(Extension)</TargetPath>
     </ContentWithTargetPath>
