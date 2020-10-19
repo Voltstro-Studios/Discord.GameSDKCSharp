@@ -21,7 +21,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>\bin\Release\Discord.GameSDK.xml</DocumentationFile>
+    <DocumentationFile>$(ProjectDir)bin/Release/Discord.GameSDK.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
