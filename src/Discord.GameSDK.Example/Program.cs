@@ -1,62 +1,60 @@
 ﻿using System;
-using Discord.GameSDK.Activities;
-using Discord.GameSDK.Images;
+using System.Diagnostics;
+using Activity = Discord.GameSDK.Activities.Activity;
 
 namespace Discord.GameSDK.Example
 {
 	public static class Program
 	{
-		public static void Main(string[] args)
+		private const long ClientId = 758184866411315221;
+		private static Discord discord;
+
+		public static void Main()
 		{
 			Console.WriteLine("Starting discord example...");
 
 			try
 			{
-				Discord discord = new Discord(758184866411315221, CreateFlags.Default);
-				discord.Init();
+				discord = new Discord(ClientId, CreateFlags.Default);
+				try
+				{
+					discord.Init();
+					Console.WriteLine("Discord init was a success!");
+				}
+				catch (ResultException e)
+				{
+					Console.WriteLine(e);
+					Debug.Assert(false, e.Message);
+					return;
+				}
+
 				discord.SetLogHook(LogLevel.Debug, (level, message) => Console.WriteLine(message));
 
-				bool running = true;
-				while (running)
+				Console.WriteLine("Press 'T' to update the activity, press 'C' to clear it, or press the space bar to exit.");
+
+				while (true)
 				{
-					ConsoleKeyInfo keyInfo = Console.ReadKey();
-					if (keyInfo.Key == ConsoleKey.Spacebar)
+					ConsoleKey key = Console.ReadKey().Key;
+					if (key == ConsoleKey.Spacebar)
 					{
-						running = false;
+						break;
 					}
 
-					if (keyInfo.Key == ConsoleKey.Backspace)
+					if (key == ConsoleKey.T)
 					{
-						discord.GetActivityManager().ClearActivity(result => Console.WriteLine($"Clear presence: {result}"));
-					}
+						Console.Write("\b");
 
-					if (keyInfo.Key == ConsoleKey.Enter)
-					{
 						discord.GetActivityManager().UpdateActivity(new Activity
 						{
-							Name = "Test App",
-							Details = "Bruh moment"
+							Details = "Hello",
+							Name = "Bruh moment"
 						}, result => Console.WriteLine($"Update presence: {result}"));
 					}
-
-					if (keyInfo.Key == ConsoleKey.I)
+					else if (key == ConsoleKey.C)
 					{
-						const long userID = 373808840568864768;
+						Console.Write("\b");
 
-						discord.GetImageManager().Fetch(ImageHandle.User(userID), (result, handleResult) =>
-						{
-							if (result == Result.Ok)
-							{
-								ImageDimensions dimensions =
-									discord.GetImageManager().GetDimensions(ImageHandle.User(userID));
-
-								Console.WriteLine($"Voltstro image is {dimensions.Width} x {dimensions.Height} with a size of {handleResult.Size} and an ID of {handleResult.Id}");
-							}
-							else
-							{
-								Console.WriteLine("Some error occurred getting user image!");
-							}
-						} );
+						discord.GetActivityManager().ClearActivity(result => Console.WriteLine($"Clear presence: {result}"));
 					}
 
 					discord.RunCallbacks();
