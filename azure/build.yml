@@ -1,0 +1,6 @@
+steps:
+- script: dotnet restore -v minimal src/Discord.GameSDK.sln
+  displayName: Restore Packages
+
+- script: dotnet build src/Discord.GameSDK.sln --no-restore -v minimal -c $(buildConfiguration)
+  displayName: Build Project
