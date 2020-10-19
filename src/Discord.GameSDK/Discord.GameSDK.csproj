@@ -3,6 +3,25 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <Authors>Voltstro</Authors>
+    <Company>Voltstro-Studios</Company>
+    <Description>Improved C# wrapper for the Discord game SDK.</Description>
+    <Copyright>Copyright © Voltstro-Studios 2020</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/Voltstro-Studios/Discord.GameSDKCSharp</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Voltstro-Studios/Discord.GameSDKCSharp</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
+    <PackageTags>discord-game-sdk, discord-gamesdk, unofficial, discord, game-sdk, sdk, csharp, dotnet, dotnet-standard, dotnet-standard2, unofficial-library</PackageTags>
+    <PackageId>Discord.GameSDKCSharp</PackageId>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>\bin\Release\Discord.GameSDK.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
