@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discord.GameSDK", "src\Discord.GameSDK\Discord.GameSDK.csproj", "{6C5A9B09-EA21-4AC4-BCFB-B1888283549C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discord.GameSDK", "Discord.GameSDK\Discord.GameSDK.csproj", "{6C5A9B09-EA21-4AC4-BCFB-B1888283549C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discord.GameSDK.Example", "src\Discord.GameSDK.Example\Discord.GameSDK.Example.csproj", "{E04836FA-38B6-4D63-8B63-2C5F50923C63}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discord.GameSDK.Example", "Discord.GameSDK.Example\Discord.GameSDK.Example.csproj", "{E04836FA-38B6-4D63-8B63-2C5F50923C63}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
