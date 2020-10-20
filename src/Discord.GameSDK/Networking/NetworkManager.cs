@@ -3,6 +3,29 @@ using System.Runtime.InteropServices;
 
 namespace Discord.GameSDK.Networking
 {
+	/// <summary>
+	///     A note before starting: this documentation covers the "low layer" networking level of the Discord GameSDK. What
+	///     that means is that using the network manager directly affords you the flexibility to update routes, open channels,
+	///     and handle events directly emitted by the SDK. If you're looking for something a bit easier and faster to
+	///     integrate, we recommend that you check out the networking wrapper around our lobby documentation:
+	///     <a href="https://discord.com/developers/docs/game-sdk/lobbies#integrated-networking">Integrated Networking</a>
+	///     <para>
+	///         Need a networking layer? Have a networking layer! This manager handles all things packets so you can get data
+	///         from player to player and make your multiplayer...work. It:
+	///     </para>
+	///     <list type="bullet">
+	///         <item>Functions as a connection-oriented, TCP-like API, but over UDP!</item>
+	///         <item>
+	///             Supports "reliable" and "unreliable" connections: Packets with loot in them always get there, but player
+	///             positioning can be eventually consistent
+	///         </item>
+	///         <item>
+	///             Features P2P-like connections, but routed through Discord's high-end server infrastructure: All the
+	///             benefits of direct connections, without the IP leaks!
+	///         </item>
+	///         <item>Is encrypted!</item>
+	///     </list>
+	/// </summary>
 	public sealed class NetworkManager
 	{
 		public delegate void MessageHandler(ulong peerId, byte channelId, byte[] data);
