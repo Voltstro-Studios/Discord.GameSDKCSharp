@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using Discord.GameSDK.Achievements;
 using Discord.GameSDK.Activities;
@@ -151,22 +152,23 @@ namespace Discord.GameSDK
 
 			if (methodsPtr != IntPtr.Zero) Methods.Destroy(methodsPtr);
 
-			selfHandle.Free();
+			if(selfHandle.IsAllocated)
+				selfHandle.Free();
 
-			Marshal.FreeHGlobal(eventsPtr);
-			Marshal.FreeHGlobal(applicationEventsPtr);
-			Marshal.FreeHGlobal(userEventsPtr);
-			Marshal.FreeHGlobal(imageEventsPtr);
-			Marshal.FreeHGlobal(activityEventsPtr);
-			Marshal.FreeHGlobal(relationshipEventsPtr);
-			Marshal.FreeHGlobal(lobbyEventsPtr);
-			Marshal.FreeHGlobal(networkEventsPtr);
-			Marshal.FreeHGlobal(overlayEventsPtr);
-			Marshal.FreeHGlobal(storageEventsPtr);
-			Marshal.FreeHGlobal(storeEventsPtr);
-			Marshal.FreeHGlobal(voiceEventsPtr);
-			Marshal.FreeHGlobal(achievementEventsPtr);
-
+			if(eventsPtr != IntPtr.Zero) Marshal.FreeHGlobal(eventsPtr);
+			if(applicationEventsPtr != IntPtr.Zero)Marshal.FreeHGlobal(applicationEventsPtr);
+			if(userEventsPtr != IntPtr.Zero)Marshal.FreeHGlobal(userEventsPtr);
+			if(imageEventsPtr != IntPtr.Zero)Marshal.FreeHGlobal(imageEventsPtr);
+			if(activityEventsPtr != IntPtr.Zero)Marshal.FreeHGlobal(activityEventsPtr);
+			if(relationshipEventsPtr != IntPtr.Zero)Marshal.FreeHGlobal(relationshipEventsPtr);
+			if(lobbyEventsPtr != IntPtr.Zero)Marshal.FreeHGlobal(lobbyEventsPtr);
+			if(networkEventsPtr != IntPtr.Zero)Marshal.FreeHGlobal(networkEventsPtr);
+			if(overlayEventsPtr != IntPtr.Zero)Marshal.FreeHGlobal(overlayEventsPtr);
+			if(storageEventsPtr != IntPtr.Zero)Marshal.FreeHGlobal(storageEventsPtr);
+			if(storeEventsPtr != IntPtr.Zero)Marshal.FreeHGlobal(storeEventsPtr);
+			if(voiceEventsPtr != IntPtr.Zero)Marshal.FreeHGlobal(voiceEventsPtr);
+			if(achievementEventsPtr != IntPtr.Zero)Marshal.FreeHGlobal(achievementEventsPtr);
+			
 			setLogHook?.Free();
 		}
 
